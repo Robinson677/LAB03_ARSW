@@ -1,23 +1,29 @@
 
-# ARSW — (Java 21): **Immortals & Synchronization** — con UI Swing
+# ⚔️ ARSW — (Java 21): **Immortals & Synchronization** — con UI Swing
 
-**Escuela Colombiana de Ingeniería – Arquitecturas de Software**  
+**🏫 Escuela Colombiana de Ingeniería – Arquitecturas de Software**  
 Laboratorio de concurrencia: condiciones de carrera, sincronización, suspensión cooperativa y *deadlocks*, con interfaz **Swing** tipo *Highlander Simulator*.
 
+---
+
+👤 Developers
+
+- 👨‍💻 Juan Pablo Caballero
+- 👨‍💻 Robinson Steven Nuñez
 
 ---
 
-## Requisitos
+## 📋 Requisitos
 
-- **JDK 21** (Temurin recomendado)
-- **Maven 3.9+**
-- SO: Windows, macOS o Linux
+- **JDK 21** (Temurin recomendado) ☕
+- **Maven 3.9+** 📦
+- SO: Windows, macOS o Linux 💻
 
 ---
 
-## Cómo ejecutar
+##  ▶️ Cómo ejecutar
 
-### Interfaz gráfica (Swing) — *Highlander Simulator*
+### 🎨 Interfaz gráfica (Swing) — *Highlander Simulator*
 
 **Opción A (desde `Main`, modo `ui`)**
 ```bash
@@ -29,12 +35,12 @@ mvn -q -DskipTests exec:java -Dmode=ui -Dcount=8 -Dfight=ordered -Dhealth=100 -D
 mvn -q -DskipTests exec:java   -Dexec.mainClass=edu.eci.arsw.highlandersim.ControlFrame   -Dcount=8 -Dfight=ordered -Dhealth=100 -Ddamage=10
 ```
 
-**Parámetros**  
+**Parámetros** ⚙️  
 - `-Dcount=N` → número de inmortales (por defecto 8)  
 - `-Dfight=ordered|naive` → estrategia de pelea (`ordered` evita *deadlocks*, `naive` los puede provocar)  
 - `-Dhealth`, `-Ddamage` → salud inicial y daño por golpe
 
-### Demos teóricas (sin UI)
+### 🧪 Demos teóricas (sin UI)
 ```bash
 mvn -q -DskipTests exec:java -Dmode=demos -Ddemo=1  # 1 = Deadlock ingenuo
 mvn -q -DskipTests exec:java -Dmode=demos -Ddemo=2  # 2 = Orden total (sin deadlock)
@@ -43,7 +49,7 @@ mvn -q -DskipTests exec:java -Dmode=demos -Ddemo=3  # 3 = tryLock + timeout (pro
 
 ---
 
-## Controles en la UI
+## 🎮 Controles en la UI
 
 - **Start**: inicia una simulación con los parámetros elegidos.
 - **Pause & Check**: pausa **todos** los hilos y muestra salud por inmortal y **suma total** (invariante).
@@ -54,7 +60,7 @@ mvn -q -DskipTests exec:java -Dmode=demos -Ddemo=3  # 3 = tryLock + timeout (pro
 
 ---
 
-## Arquitectura (carpetas)
+## 🗂️ Arquitectura (carpetas)
 
 ```
 edu.eci.arsw
@@ -68,9 +74,9 @@ edu.eci.arsw
 
 ---
 
-# Actividades del laboratorio
+# 🧪 Actividades del laboratorio
 
-## Parte I — (Antes de terminar la clase) `wait/notify`: Productor/Consumidor
+## 🧵 Parte I — (Antes de terminar la clase) `wait/notify`: Productor/Consumidor
 1. Ejecuta el programa de productor/consumidor y monitorea CPU con **jVisualVM**. ¿Por qué el consumo alto? ¿Qué clase lo causa?  
 2. Ajusta la implementación para **usar CPU eficientemente** cuando el **productor es lento** y el **consumidor es rápido**. Valida de nuevo con VisualVM.  
 3. Ahora **productor rápido** y **consumidor lento** con **límite de stock** (cola acotada): garantiza que el límite se respete **sin espera activa** y valida CPU con un stock pequeño.
@@ -82,7 +88,7 @@ edu.eci.arsw
 
 ---
 
-## Parte II — (Antes de terminar la clase) Búsqueda distribuida y condición de parada
+## 🌐 Parte II — (Antes de terminar la clase) Búsqueda distribuida y condición de parada
 Reescribe el **buscador de listas negras** para que la búsqueda **se detenga tan pronto** el conjunto de hilos detecte el número de ocurrencias que definen si el host es confiable o no (`BLACK_LIST_ALARM_COUNT`). Debe:
 - **Finalizar anticipadamente** (no recorrer servidores restantes) y **retornar** el resultado.  
 - Garantizar **ausencia de condiciones de carrera** sobre el contador compartido.
@@ -91,7 +97,7 @@ Reescribe el **buscador de listas negras** para que la búsqueda **se detenga ta
 
 ---
 
-## Parte III — (Avance) Sincronización y *Deadlocks* con *Highlander Simulator*
+## ⚔️ Parte III — (Avance) Sincronización y *Deadlocks* con *Highlander Simulator*
 1. Revisa la simulación: N inmortales; cada uno **ataca** a otro. El que ataca **resta M** al contrincante y **suma M/2** a su propia vida.  
 2. **Invariante**: con N y salud inicial `H`, la suma total debería permanecer constante (salvo durante un update). Calcula ese valor y úsalo para validar.  
 3. Ejecuta la UI y prueba **“Pause & Check”**. ¿Se cumple el invariante? Explica.  
@@ -113,7 +119,7 @@ Reescribe el **buscador de listas negras** para que la búsqueda **se detenga ta
 
 ---
 
-## Entregables
+## 📦 Entregables
 
 1. **Código fuente** (Java 21) con la UI funcionando.  
 2. **`Informe de laboratorio en formato pdf`** con:
@@ -128,7 +134,7 @@ Reescribe el **buscador de listas negras** para que la búsqueda **se detenga ta
 
 ---
 
-## Criterios de evaluación (10 pts)
+## 📊 Criterios de evaluación (10 pts)
 
 - (3) **Concurrencia correcta**: sin *data races*; sincronización bien localizada; no hay espera activa.  
 - (2) **Pausa/Reanudar**: consistencia del estado e invariante bajo **Pause & Check**.  
@@ -138,7 +144,7 @@ Reescribe el **buscador de listas negras** para que la búsqueda **se detenga ta
 
 ---
 
-## Tips y configuración útil
+## 💡 Tips y configuración útil
 
 - **Estrategias de pelea**:  
   - `-Dfight=naive` → útil para **reproducir** carreras y *deadlocks*.  
@@ -150,7 +156,7 @@ Reescribe el **buscador de listas negras** para que la búsqueda **se detenga ta
 
 ---
 
-## Cómo correr pruebas
+## 🧪 Cómo correr pruebas
 
 ```bash
 mvn clean verify
@@ -160,7 +166,7 @@ Incluye compilación y pruebas JUnit.
 
 ---
 
-## Créditos y licencia
+## 📜 Créditos y licencia
 
 Laboratorio basado en el enunciado histórico del curso (Highlander, Productor/Consumidor, Búsqueda distribuida), modernizado a **Java 21**.  
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />Este contenido hace parte del curso Arquitecturas de Software (ECI) y está licenciado como <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
