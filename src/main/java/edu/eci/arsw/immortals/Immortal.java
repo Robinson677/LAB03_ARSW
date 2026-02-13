@@ -20,10 +20,7 @@ public final class Immortal implements Runnable {
     private volatile boolean running = true;
     private final ReentrantLock lock = new ReentrantLock();
 
-    public Immortal(String name, int health, int damage,
-                    ConcurrentLinkedQueue<Immortal> population,
-                    ScoreBoard scoreBoard,
-                    PauseController controller) {
+    public Immortal(String name, int health, int damage,ConcurrentLinkedQueue<Immortal> population, ScoreBoard scoreBoard, PauseController controller) {
 
         this.name = Objects.requireNonNull(name);
         this.health = health;
