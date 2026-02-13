@@ -121,6 +121,9 @@ Reescribe el **buscador de listas negras** para que la búsqueda **se detenga ta
 10. **Remover inmortales muertos** sin bloquear la simulación: analiza si crea una **condición de carrera** con muchos hilos y corrige **sin sincronización global** (colección concurrente o enfoque *lock-free*).  
 11. Implementa completamente **STOP** (apagado ordenado).
 
+**Solución:**
+[Ver en PDF el Desarrollo de la parte III](./docs/ParteIII.pdf)
+
 ---
 
 ## 📦 Entregables
